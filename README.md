@@ -1,6 +1,6 @@
 # tap_invest_manoj
 
-A new Flutter project.
+A TapInvest Assiggment Flutter project.
 
 ## Getting Started
 
