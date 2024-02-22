@@ -313,7 +313,6 @@ class _PurchasePageState extends State<PurchasePage> {
             padding: const EdgeInsets.only(top: 10.0),
             child: Builder(
               builder: (context) {
-                final GlobalKey<SlideActionState> _key = GlobalKey();
                 return Padding(
                     padding: const EdgeInsets.only(
                       left: 8.0,
@@ -321,7 +320,7 @@ class _PurchasePageState extends State<PurchasePage> {
                     child: SlideAction(
                       onSubmit: controller.text.isNotEmpty
                           ? () {
-                              HapticFeedback.heavyImpact();
+                              HapticFeedback.vibrate();
                               Navigator.push(
                                   context,
                                   MaterialPageRoute(

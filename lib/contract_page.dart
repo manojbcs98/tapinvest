@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:tap_invest_manoj/all_done.dart';
 
 class ContractPage extends StatelessWidget {
@@ -22,6 +23,7 @@ class ContractPage extends StatelessWidget {
                 height: 40,
                 child: ElevatedButton(
                     onPressed: () {
+                      HapticFeedback.vibrate();
                       Navigator.push(context,
                           MaterialPageRoute(builder: (context) => AllDone()));
                     },

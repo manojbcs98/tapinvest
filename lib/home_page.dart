@@ -222,7 +222,7 @@ class _HomePageState extends State<HomePage> {
       enabled: true,
       onChanged: (String res) {},
       keyboardType: TextInputType.number,
-      decoration: InputDecoration(
+      decoration: const InputDecoration(
         hintText: 'Enter text here',
         focusedBorder: UnderlineInputBorder(
           borderSide: BorderSide(color: backGroundColor),
@@ -231,12 +231,6 @@ class _HomePageState extends State<HomePage> {
           borderSide: BorderSide(color: Colors.blue),
         ),
       ),
-      /*decoration: InputDecoration(
-              //labelText: 'Enter Amount (Min $minAmount)',
-              hintText: '\$${minAmount.toString()}',
-              //prefixText: '\$',
-              suffixText: '${(_amount / 1000).round()}k',
-            ),*/
     );
   }
 
@@ -285,6 +279,7 @@ class _HomePageState extends State<HomePage> {
               padding: const EdgeInsets.only(left: 13, top: 15),
               child: GestureDetector(
                 onTap: () {
+                  HapticFeedback.vibrate();
                   Navigator.push(context,
                       MaterialPageRoute(builder: (context) => PurchasePage()));
                 },
