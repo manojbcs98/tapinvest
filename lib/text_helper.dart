@@ -162,8 +162,8 @@ Widget nestedTextInsideContainer(IconData icon, {IconData? secondaryIcon}) {
   return Padding(
     padding: const EdgeInsets.all(8.0),
     child: Container(
-      width: 300,
-      height: 300,
+      width: 330,
+      height: 250,
       decoration: BoxDecoration(
         color: backGroundColor,
         borderRadius: BorderRadius.circular(15),
@@ -183,7 +183,7 @@ Widget nestedTextInsideContainer(IconData icon, {IconData? secondaryIcon}) {
                 ),
               )
             : Padding(
-                padding: const EdgeInsets.only(left: 8.0, top: 30),
+                padding: const EdgeInsets.only(left: 18.0, top: 30),
                 child: Container(
                   height: 45,
                   width: 45,
@@ -197,8 +197,21 @@ Widget nestedTextInsideContainer(IconData icon, {IconData? secondaryIcon}) {
                 ),
               ),
         (secondaryIcon == null)
-            ? Padding(
-                padding: const EdgeInsets.all(8.0),
+            ? const Text('')
+            : const Padding(
+                padding: EdgeInsets.only(top: 18.0, left: 10),
+                child: Text(
+                  'Invoice Discount',
+                  style: TextStyle(
+                    fontWeight: FontWeight.w600,
+                    color: Color(0xFF57544F),
+                    fontSize: 15,
+                  ),
+                ),
+              ),
+        (secondaryIcon == null)
+            ? const Padding(
+                padding: EdgeInsets.all(8.0),
                 child: Text(
                   'Car or sport car is a vehicle with four wheels and is designed to carry a small number of people. Cars are used for a variety of purposes, including transportation, recreation, and business. Some people collect cars as a hobby, while others use them for racing or off-roading.',
                   maxLines: 3,
@@ -206,7 +219,7 @@ Widget nestedTextInsideContainer(IconData icon, {IconData? secondaryIcon}) {
                   style: TextStyle(
                     fontWeight: FontWeight.w400,
                     color: Color(0xFF86807A),
-                    fontSize: 17,
+                    fontSize: 15,
                   ),
                 ),
               )
@@ -228,7 +241,8 @@ Widget nestedTextInsideContainer(IconData icon, {IconData? secondaryIcon}) {
                     ),
                     Padding(
                       padding: const EdgeInsets.only(right: 12.0),
-                      child: Icon(secondaryIcon, color: Color(0xFF86807A)),
+                      child: Icon(secondaryIcon,
+                          size: 24, color: Color(0xFF86807A)),
                     )
                   ],
                 ),

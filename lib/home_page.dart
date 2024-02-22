@@ -5,6 +5,7 @@ import 'package:tap_invest_manoj/purchase.dart';
 import 'package:tap_invest_manoj/table_model_data.dart';
 import 'package:tap_invest_manoj/text_helper.dart';
 import 'constants.dart';
+import 'second_success_page.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -24,8 +25,12 @@ class _HomePageState extends State<HomePage> {
         bottomNavigationBar: bottomBar(),
         appBar: AppBar(
           elevation: 0,
+          surfaceTintColor: backGroundColor,
+          scrolledUnderElevation: 0.0,
           leading: const Padding(
-            padding: EdgeInsets.only(top: 26.0),
+            padding: EdgeInsets.only(
+              top: 26.0,
+            ),
             child: Row(
               children: [
                 BackButton(color: primaryColor),
@@ -33,8 +38,12 @@ class _HomePageState extends State<HomePage> {
             ),
           ),
           title: const Padding(
-            padding: EdgeInsets.only(top: 30.0, right: 40),
-            child: Text('Back to deals', style: TextStyle(color: primaryColor)),
+            padding: EdgeInsets.only(top: 35.0, right: 20),
+            child: Text('Back to Deals',
+                style: TextStyle(
+                    color: Color(0xFF16803A),
+                    fontSize: 15,
+                    fontWeight: FontWeight.w400)),
           ),
           backgroundColor: backGroundColor,
         ),
@@ -69,13 +78,11 @@ class _HomePageState extends State<HomePage> {
                               ),
                             ),
                           ),
-                          Container(
-                            width: 15,
-                            height: 15,
-                            decoration: BoxDecoration(
-                              color: Color(0xFF7CD957),
-                              borderRadius:
-                                  BorderRadius.all(Radius.circular(4)),
+                          CustomPaint(
+                            painter: TrianglePainter(),
+                            child: Container(
+                              height: 20,
+                              width: 20,
                             ),
                           ),
                           Padding(
@@ -186,7 +193,9 @@ class _HomePageState extends State<HomePage> {
                   getTable(tableData),
                   const SizedBox(height: 20),
                   customSpacer(),
-                  highLightText('DOCUMENTS'),
+                  const SizedBox(height: 20),
+                  highLightText('Documents'),
+                  const SizedBox(height: 10),
                   Padding(
                     padding: const EdgeInsets.all(8.0),
                     child: nestedTextInsideContainer(Icons.file_copy,
@@ -256,8 +265,16 @@ class _HomePageState extends State<HomePage> {
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: [
-                    Text('Filled'),
-                    Text('30%'),
+                    Text('FILLED',
+                        style: TextStyle(
+                            color: Color(0xFFB2B2B2),
+                            fontSize: 12,
+                            fontWeight: FontWeight.w500)),
+                    Text('30%  ',
+                        style: TextStyle(
+                            color: Color(0xFF374151),
+                            fontSize: 16,
+                            fontWeight: FontWeight.w500)),
                   ],
                 )),
           ),
@@ -287,4 +304,26 @@ class _HomePageState extends State<HomePage> {
       ),
     ));
   }
+}
+
+class TrianglePainter extends CustomPainter {
+  @override
+  void paint(Canvas canvas, Size size) {
+    final paint = Paint()
+      ..color = Color(0xFF7CD957)
+      ..style = PaintingStyle.fill;
+
+    final path = Path()
+      ..moveTo(size.width / 2, 0)
+      ..quadraticBezierTo(size.width / 4, size.height / 2, 0, size.height)
+      ..quadraticBezierTo(
+          size.width / 2, 3 * size.height / 4, size.width, size.height)
+      ..quadraticBezierTo(
+          3 * size.width / 4, size.height / 2, size.width / 2, 0);
+
+    canvas.drawPath(path, paint);
+  }
+
+  @override
+  bool shouldRepaint(CustomPainter oldDelegate) => false;
 }

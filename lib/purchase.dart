@@ -10,6 +10,8 @@ import 'constants.dart';
 import 'package:flutter/services.dart';
 import 'package:intl/intl.dart';
 
+import 'first_success_page.dart';
+
 class PurchasePage extends StatefulWidget {
   const PurchasePage({Key? key}) : super(key: key);
 
@@ -19,7 +21,7 @@ class PurchasePage extends StatefulWidget {
 
 class _PurchasePageState extends State<PurchasePage> {
   TextEditingController controller = TextEditingController();
-  String interestAmount = '56555';
+  String interestAmount = '56,555';
   String errorText = '';
   final FocusNode _focusNode = FocusNode();
 
@@ -41,10 +43,10 @@ class _PurchasePageState extends State<PurchasePage> {
             padding: const EdgeInsets.only(top: 10.0, left: 20),
             child: Container(
                 height: 30,
-                width: 30,
-                decoration:
-                    BoxDecoration(shape: BoxShape.circle, color: lightGreen),
-                child: BackButton(color: primaryColor)),
+                width: 40,
+                decoration: const BoxDecoration(
+                    shape: BoxShape.circle, color: lightGreen),
+                child: const BackButton(color: primaryColor)),
           ),
           title: const Padding(
             padding: EdgeInsets.only(
@@ -62,9 +64,9 @@ class _PurchasePageState extends State<PurchasePage> {
                 mainAxisAlignment: MainAxisAlignment.start,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Padding(
-                    padding: const EdgeInsets.only(left: 22.0, top: 20),
-                    child: const Text('Purchasing',
+                  const Padding(
+                    padding: EdgeInsets.only(left: 22.0, top: 20),
+                    child: Text('Purchasing',
                         style: TextStyle(
                             color: Color(0xff000000),
                             fontWeight: FontWeight.bold,
@@ -89,7 +91,7 @@ class _PurchasePageState extends State<PurchasePage> {
                   ),
                   const Center(
                       child: Padding(
-                    padding: EdgeInsets.only(left: 20.0),
+                    padding: EdgeInsets.only(left: 10.0),
                     child: Text(
                       'ENTER AMOUNT',
                       style: TextStyle(
@@ -102,14 +104,19 @@ class _PurchasePageState extends State<PurchasePage> {
                     height: 30,
                   ),
                   Padding(
-                    padding: const EdgeInsets.only(left: 30.0, top: 0),
+                    padding: const EdgeInsets.only(left: 15.0, top: 0),
                     child: Center(
                       child: SizedBox(
                         width: 200,
                         height: 40,
                         child: TextField(
+                          style: TextStyle(
+                              fontSize: 20,
+                              color: Colors.black87,
+                              fontWeight: FontWeight.w600),
                           inputFormatters: [
-                            // IndianNumberFormatInputFormatter(),
+                            ThousandsSeparatorInputFormatter(),
+                            LengthLimitingTextInputFormatter(12),
                           ],
                           textAlignVertical: TextAlignVertical.center,
                           focusNode: _focusNode,
@@ -118,31 +125,14 @@ class _PurchasePageState extends State<PurchasePage> {
                           autofocus: false,
                           cursorColor: Colors.black,
                           onChanged: (res) {
-                            setState(() {
-                              if (controller.text.isNotEmpty) {
-                                double value = double.parse(controller.text);
-                                print(value);
-                                if (value < 50000) {
-                                  _focusNode.requestFocus();
-                                  errorText = 'Please Enter Min 50000';
-                                } else if (value >= 50000) {
-                                  errorText = '';
-                                }
-                              } else if (controller.text.isEmpty) {
-                                _focusNode.requestFocus();
-                                errorText = 'Please Enter Amount';
-                              } else {
-                                _focusNode.requestFocus();
-                                errorText = '';
-                              }
-                              interestAmount = smartCompute(res);
-                            });
+                            getComputation();
                           },
                           decoration: InputDecoration(
                               errorText: errorText,
-                              errorStyle: TextStyle(color: Colors.red),
+                              errorStyle: const TextStyle(
+                                  color: Color(0xFFc17235), fontSize: 12),
                               border: InputBorder.none,
-                              contentPadding: EdgeInsets.only(top: 0),
+                              contentPadding: EdgeInsets.only(top: 0, left: 40),
 
                               // Adjust the padding around the text
                               hintText: 'Min 50,000',
@@ -182,14 +172,13 @@ class _PurchasePageState extends State<PurchasePage> {
                     height: 15,
                   ),
                   totalReturns('Tenure', '61 days'),
-                  RotatingStar()
                 ],
               ),
             )));
   }
 
   Widget netYield() {
-    return Padding(
+    return const Padding(
       padding: EdgeInsets.all(8.0),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -234,6 +223,32 @@ class _PurchasePageState extends State<PurchasePage> {
     );
   }
 
+  void getComputation() {
+    String temp = '';
+    setState(() {
+      if (controller.text.isNotEmpty) {
+        if (controller.text.contains(',')) {
+          temp = controller.text.replaceAll(",", '');
+        }
+        double value = double.parse(temp);
+        print(value);
+        if (value < 50000) {
+          _focusNode.requestFocus();
+          errorText = 'Please Enter Min 50000';
+        } else if (value >= 50000) {
+          errorText = '';
+        }
+      } else if (controller.text.isEmpty) {
+        _focusNode.requestFocus();
+        errorText = 'Please Enter Amount';
+      } else {
+        _focusNode.requestFocus();
+        errorText = '';
+      }
+      interestAmount = smartCompute(temp);
+    });
+  }
+
   Widget totalReturns(String text1, String text2) {
     return Padding(
       padding: const EdgeInsets.all(8.0),
@@ -251,13 +266,22 @@ class _PurchasePageState extends State<PurchasePage> {
     double a = double.tryParse(input) ?? 50000;
     var x = (a * 13.11) / 100;
     double y = a + x;
-    return y.toString();
+    String res = y.toString();
+    if (res.length < 4) {
+      return res;
+    } else {
+      double number = double.parse(res);
+      String pattern = '#,##,##,###';
+      NumberFormat formatter = NumberFormat(pattern);
+      String output = formatter.format(number);
+      return output;
+    }
   }
 
   Widget bottomBar() {
     return SafeArea(
         child: Container(
-      decoration: BoxDecoration(
+      decoration: const BoxDecoration(
         border: Border(
           top: BorderSide(
             color: Colors.black12,
@@ -295,13 +319,21 @@ class _PurchasePageState extends State<PurchasePage> {
                       left: 8.0,
                     ),
                     child: SlideAction(
-                      onSubmit: () {
-                        HapticFeedback.heavyImpact();
-                        /*    Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => HomePage()));*/
-                      },
+                      onSubmit: controller.text.isNotEmpty
+                          ? () {
+                              HapticFeedback.heavyImpact();
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) =>
+                                          FirstSuccessPage()));
+                            }
+                          : () {
+                              setState(() {
+                                _focusNode.requestFocus();
+                                errorText = 'Please Enter Amount';
+                              });
+                            },
                       sliderRotate: false,
 
                       outerColor: Color(0xFFE7E5E4),
@@ -311,7 +343,7 @@ class _PurchasePageState extends State<PurchasePage> {
                       elevation: 0,
                       borderRadius: 5,
                       height: 55,
-                      child: Center(
+                      child: const Center(
                         child: Text('SWIPE TO PAY',
                             style: TextStyle(
                                 color: Colors.black87,
@@ -328,43 +360,18 @@ class _PurchasePageState extends State<PurchasePage> {
   }
 }
 
-class IndianNumberFormatInputFormatter extends TextInputFormatter {
+class ThousandsSeparatorInputFormatter extends TextInputFormatter {
   @override
   TextEditingValue formatEditUpdate(
       TextEditingValue oldValue, TextEditingValue newValue) {
-    if (newValue.text.isEmpty) {
-      return newValue.copyWith(text: '');
+    if (newValue.text.length < 4) {
+      return newValue;
     }
-
-    int selectionIndex = newValue.selection.end;
-    String cleanText = newValue.text.replaceAll(RegExp(r'[^\d]'), '');
-    String formattedValue = _formatAsIndianNumber(cleanText);
-
-    // Adjust the selection index based on the formatted value
-    if (oldValue.text.length < newValue.text.length) {
-      selectionIndex += formattedValue.length - cleanText.length;
-    } else {
-      selectionIndex -= cleanText.length - formattedValue.length;
-    }
-
+    final number = int.parse(newValue.text.replaceAll(',', ''));
+    final formatted = NumberFormat('#,##,###').format(number);
     return TextEditingValue(
-      text: formattedValue,
-      selection: TextSelection.collapsed(
-          offset: selectionIndex.clamp(0, formattedValue.length)),
+      text: formatted,
+      selection: TextSelection.collapsed(offset: formatted.length),
     );
-  }
-
-  String _formatAsIndianNumber(String input) {
-    String result = '';
-    int len = input.length;
-    int groups = (len / 2).ceil();
-    for (int i = 0; i < groups; i++) {
-      int endIndex = len - i * 2;
-      int startIndex = (endIndex - 2).clamp(0, len);
-      result = input.substring(startIndex, endIndex) +
-          (result.isEmpty ? '' : ',') +
-          result;
-    }
-    return result;
   }
 }
