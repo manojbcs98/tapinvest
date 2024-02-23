@@ -2,8 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
 import 'package:tap_invest_manoj/main.dart';
 
-import 'constants.dart';
-
 class AllDone extends StatefulWidget {
   const AllDone({Key? key}) : super(key: key);
 

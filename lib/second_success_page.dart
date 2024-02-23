@@ -59,7 +59,7 @@ class _SecondSuccessPageState extends State<SecondSuccessPage>
             ),
             isLoading == true
                 ? Padding(
-                    padding: EdgeInsets.only(left: 130, top: 180),
+                    padding: EdgeInsets.only(left: 140, top: 180),
                     child: Positioned(
                         child: Column(
                       children: [
@@ -67,7 +67,7 @@ class _SecondSuccessPageState extends State<SecondSuccessPage>
                           height: 120,
                           width: 120,
                           decoration: BoxDecoration(
-                            color: Color(0xFF126631),
+                            color: const Color(0xFF126631),
                             borderRadius: BorderRadius.circular(15),
                           ),
                           child: Image.asset('assets/file_written.png',
@@ -77,7 +77,7 @@ class _SecondSuccessPageState extends State<SecondSuccessPage>
                     )),
                   )
                 : Padding(
-                    padding: EdgeInsets.only(left: 65, top: 180),
+                    padding: EdgeInsets.only(left: 85, top: 180),
                     child: Positioned(
                         child: Column(
                       children: [

@@ -56,7 +56,7 @@ class _FirstSuccessPageState extends State<FirstSuccessPage>
             ),
             Padding(
               padding:
-                  EdgeInsets.only(left: _isRotating ? 130 : 65.0, top: 180),
+                  EdgeInsets.only(left: _isRotating ? 140 : 90.0, top: 180),
               child: Column(
                 children: [
                   Positioned(

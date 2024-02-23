@@ -1,11 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:lottie/lottie.dart';
 import 'package:tap_invest_manoj/purchase.dart';
 import 'package:tap_invest_manoj/table_model_data.dart';
-import 'package:tap_invest_manoj/text_helper.dart';
+import 'package:tap_invest_manoj/widget_helper.dart';
 import 'constants.dart';
-import 'second_success_page.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -42,13 +40,13 @@ class _HomePageState extends State<HomePage> {
             child: Text('Back to Deals',
                 style: TextStyle(
                     color: Color(0xFF16803A),
-                    fontSize: 15,
+                    fontSize: 18,
                     fontWeight: FontWeight.w400)),
           ),
           backgroundColor: backGroundColor,
         ),
         body: SingleChildScrollView(
-            physics: const ScrollPhysics(),
+            physics: const BouncingScrollPhysics(),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
@@ -112,7 +110,7 @@ class _HomePageState extends State<HomePage> {
                     ),
                   ),
                 ),
-                text1(
+                textHeader1(
                     const TextStyle(
                         color: Color(0xff152420),
                         fontWeight: FontWeight.bold,
@@ -125,7 +123,7 @@ class _HomePageState extends State<HomePage> {
                 SizedBox(
                   height: 5,
                 ),
-                text2(),
+                textHeader2(),
                 SizedBox(
                   height: 15,
                 ),
@@ -139,11 +137,11 @@ class _HomePageState extends State<HomePage> {
                 ),
                 Padding(
                   padding: const EdgeInsets.only(left: 8.0),
-                  child: header1('Clients'),
+                  child: columnHeader1('Clients'),
                 ),
                 Padding(
                   padding: const EdgeInsets.only(left: 8.0),
-                  child: header1('Backed by'),
+                  child: columnHeader1('Backed by'),
                 ),
                 customSpacer(),
                 SizedBox(

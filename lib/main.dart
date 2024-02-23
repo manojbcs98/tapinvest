@@ -1,8 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:tap_invest_manoj/all_done.dart';
-import 'package:tap_invest_manoj/constants.dart';
-import 'package:tap_invest_manoj/second_success_page.dart';
-
 import 'home_page.dart';
 
 void main() {

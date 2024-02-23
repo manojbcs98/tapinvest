@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:tap_invest_manoj/constants.dart';
 import 'package:tap_invest_manoj/table_model_data.dart';
 
-Widget text1(TextStyle style1, TextStyle style2, double iconSize) {
+Widget textHeader1(TextStyle style1, TextStyle style2, double iconSize) {
   return Padding(
     padding: const EdgeInsets.only(left: 22.0, top: 20),
     child: Row(
@@ -25,7 +25,7 @@ Widget text1(TextStyle style1, TextStyle style2, double iconSize) {
   );
 }
 
-Widget text2() {
+Widget textHeader2() {
   return const Padding(
     padding: EdgeInsets.only(left: 18.0, top: 5),
     child: Column(
@@ -122,7 +122,7 @@ Widget customSpacer() {
   );
 }
 
-Widget header1(String text) {
+Widget columnHeader1(String text) {
   return Padding(
     padding: const EdgeInsets.all(8.0),
     child: Column(

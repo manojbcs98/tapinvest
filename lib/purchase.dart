@@ -1,15 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:lottie/lottie.dart';
-import 'package:tap_invest_manoj/home_page.dart';
-import 'package:tap_invest_manoj/table_model_data.dart';
-import 'package:tap_invest_manoj/text_helper.dart';
+import 'package:tap_invest_manoj/widget_helper.dart';
 import 'package:slide_to_act/slide_to_act.dart';
-import 'animated_star.dart';
 import 'constants.dart';
-import 'package:flutter/services.dart';
 import 'package:intl/intl.dart';
-
 import 'first_success_page.dart';
 
 class PurchasePage extends StatefulWidget {
@@ -77,7 +71,7 @@ class _PurchasePageState extends State<PurchasePage> {
                   ),
                   Padding(
                     padding: const EdgeInsets.only(left: 0.0),
-                    child: text1(
+                    child: textHeader1(
                         const TextStyle(
                             color: Color(0xff807A75),
                             fontWeight: FontWeight.w400,
@@ -97,7 +91,7 @@ class _PurchasePageState extends State<PurchasePage> {
                   ),
                   const Center(
                       child: Padding(
-                    padding: EdgeInsets.only(left: 10.0),
+                    padding: EdgeInsets.only(left: 5.0),
                     child: Text(
                       'ENTER AMOUNT',
                       style: TextStyle(

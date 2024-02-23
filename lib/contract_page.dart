@@ -30,14 +30,14 @@ class ContractPage extends StatelessWidget {
                     },
                     style: ElevatedButton.styleFrom(
                       foregroundColor: Colors.white,
-                      backgroundColor: Color(
+                      backgroundColor: const Color(
                           0xFF179645), // Change the text color of the button
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(
                             10), // Change the border radius of the button
                       ),
                     ),
-                    child: Text(
+                    child: const Text(
                       'Sign Contract',
                       style: TextStyle(color: Colors.white),
                     )),
