@@ -27,7 +27,7 @@ Widget text1(TextStyle style1, TextStyle style2, double iconSize) {
 
 Widget text2() {
   return const Padding(
-    padding: EdgeInsets.only(left: 22.0, top: 20),
+    padding: EdgeInsets.only(left: 18.0, top: 5),
     child: Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -50,16 +50,17 @@ Widget getTable(List<TableModelData> data) {
     padding: const EdgeInsets.all(8.0),
     child: Table(
       border: const TableBorder(
+        borderRadius: BorderRadius.all(Radius.circular(10)),
         horizontalInside: BorderSide(width: 1, color: borderColor),
         verticalInside: BorderSide(width: 1, color: borderColor),
-        bottom: BorderSide(width: 2, color: borderColor),
-        top: BorderSide(width: 2, color: borderColor),
-        left: BorderSide(width: 2, color: borderColor),
-        right: BorderSide(width: 2, color: borderColor),
+        bottom: BorderSide(width: 1, color: borderColor),
+        top: BorderSide(width: 1, color: borderColor),
+        left: BorderSide(width: 1, color: borderColor),
+        right: BorderSide(width: 1, color: borderColor),
       ),
       children: [
         TableRow(
-          decoration: BoxDecoration(color: greyColor1),
+          decoration: const BoxDecoration(color: greyColor1),
           children: [
             buildTableCell(data[0].title, data[0].subTitle),
             buildTableCell(data[1].title, data[1].subTitle),
@@ -81,28 +82,34 @@ TableCell buildTableCell(String text1, String text2) {
   return TableCell(
     verticalAlignment: TableCellVerticalAlignment.top,
     child: Padding(
-      padding: const EdgeInsets.only(left: 50.0, top: 15),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        //mainAxisAlignment: MainAxisAlignment.start,
-        children: [
-          Text(
-            text1,
-            style: const TextStyle(
-              fontSize: 13,
-              fontWeight: FontWeight.w500,
-              color: Color(0xff78717C),
+      padding: const EdgeInsets.only(left: 20.0, top: 15),
+      child: Container(
+        height: 55,
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          //mainAxisAlignment: MainAxisAlignment.start,
+          children: [
+            Text(
+              text1,
+              style: const TextStyle(
+                fontSize: 13,
+                fontWeight: FontWeight.w500,
+                color: Color(0xff78717C),
+              ),
             ),
-          ),
-          Text(
-            text2,
-            style: const TextStyle(
-              fontSize: 18,
-              fontWeight: FontWeight.w400,
-              color: Colors.black87,
+            SizedBox(
+              height: 5,
             ),
-          ),
-        ],
+            Text(
+              text2,
+              style: const TextStyle(
+                fontSize: 18,
+                fontWeight: FontWeight.w400,
+                color: Colors.black87,
+              ),
+            ),
+          ],
+        ),
       ),
     ),
   );
@@ -128,19 +135,22 @@ Widget header1(String text) {
               fontSize: 18,
               fontWeight: FontWeight.w600),
         ),
-        Row(
-          mainAxisAlignment: MainAxisAlignment.start,
-          children: [
-            Image.asset('assets/google.png', height: 80, width: 80),
-            SizedBox(
-              width: 20,
-            ),
-            Image.asset('assets/google.png', height: 80, width: 80),
-            SizedBox(
-              width: 20,
-            ),
-            Image.asset('assets/google.png', height: 80, width: 80),
-          ],
+        Padding(
+          padding: const EdgeInsets.only(bottom: 18.0),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.start,
+            children: [
+              Image.asset('assets/google.png', height: 80, width: 80),
+              SizedBox(
+                width: 20,
+              ),
+              Image.asset('assets/google.png', height: 80, width: 80),
+              SizedBox(
+                width: 20,
+              ),
+              Image.asset('assets/google.png', height: 80, width: 80),
+            ],
+          ),
         )
       ],
     ),

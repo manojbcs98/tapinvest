@@ -11,6 +11,6 @@ const Color lightGreen = Color(0xffDFEBDF);
 Map<int, String> map = {
   0: 'FUNDING',
   1: 'TRACTION',
-  2: 'FINANCIALS',
-  3: 'COMPETITION',
+  2: 'FINANCIALs',
+  3: 'EQUITY',
 };

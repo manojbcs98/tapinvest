@@ -49,82 +49,107 @@ class _HomePageState extends State<HomePage> {
         ),
         body: SingleChildScrollView(
             physics: const ScrollPhysics(),
-            child: Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Padding(
-                    padding: const EdgeInsets.only(left: 25.0, top: 20),
-                    child: Container(
-                      width: 120,
-                      height: 120,
-                      decoration: BoxDecoration(
-                        border: Border.all(color: greyColor, width: 2),
-                        color: Colors.white,
-                        borderRadius: BorderRadius.circular(20),
-                      ),
-                      child: Row(
-                        //mainAxisAlignment: MainAxisAlignment.start,
-                        children: [
-                          Padding(
-                            padding: const EdgeInsets.all(8.0),
-                            child: Container(
-                              width: 15,
-                              height: 15,
-                              decoration: BoxDecoration(
-                                color: Color(0xFF7CD957),
-                                borderRadius: BorderRadius.circular(40),
-                              ),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Padding(
+                  padding: const EdgeInsets.only(left: 20.0, top: 25),
+                  child: Container(
+                    width: 120,
+                    height: 120,
+                    decoration: BoxDecoration(
+                      border: Border.all(color: greyColor, width: 2),
+                      color: Colors.white,
+                      borderRadius: BorderRadius.circular(10),
+                    ),
+                    child: Row(
+                      children: [
+                        Padding(
+                          padding: const EdgeInsets.only(left: 8.0, top: 3),
+                          child: Container(
+                            width: 15,
+                            height: 15,
+                            decoration: BoxDecoration(
+                              color: Color(0xFF7CD957),
+                              borderRadius: BorderRadius.circular(40),
                             ),
                           ),
-                          CustomPaint(
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.only(left: 8.0, top: 3),
+                          child: Container(
+                            width: 15,
+                            height: 15,
+                            decoration: BoxDecoration(
+                              color: Color(0xFF7CD957),
+                              borderRadius: BorderRadius.only(
+                                  bottomLeft: Radius.circular(2),
+                                  bottomRight: Radius.elliptical(10, 5),
+                                  topRight: Radius.elliptical(10, 5)),
+                            ),
+                          ),
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.only(left: 8.0, top: 0),
+                          child: CustomPaint(
                             painter: TrianglePainter(),
                             child: Container(
                               height: 20,
                               width: 20,
                             ),
                           ),
-                          Padding(
-                            padding: const EdgeInsets.all(8.0),
-                            child: Container(
-                              width: 15,
-                              height: 15,
-                              decoration: BoxDecoration(
-                                color: Color(0xFF7CD957),
-                                borderRadius: BorderRadius.only(
-                                    bottomLeft: Radius.circular(2),
-                                    bottomRight: Radius.elliptical(10, 5),
-                                    topRight: Radius.elliptical(10, 5)),
-                              ),
-                            ),
-                          ),
-                        ],
-                      ),
+                        ),
+                      ],
                     ),
                   ),
-                  text1(
-                      const TextStyle(
-                          color: Color(0xff152420),
-                          fontWeight: FontWeight.bold,
-                          fontSize: 20),
-                      const TextStyle(
-                          color: Color(0xff78717C),
-                          fontWeight: FontWeight.w600,
-                          fontSize: 20),
-                      20),
-                  SizedBox(
-                    height: 5,
-                  ),
-                  text2(),
-                  getTable(firstTableContents()),
-                  customSpacer(),
-                  header1('Clients'),
-                  customSpacer(),
-                  header1('Backed by'),
-                  customSpacer(),
-                  highLightText('Highlights'),
-                  SizedBox(
+                ),
+                text1(
+                    const TextStyle(
+                        color: Color(0xff152420),
+                        fontWeight: FontWeight.bold,
+                        fontSize: 20),
+                    const TextStyle(
+                        color: Color(0xff78717C),
+                        fontWeight: FontWeight.w600,
+                        fontSize: 20),
+                    20),
+                SizedBox(
+                  height: 5,
+                ),
+                text2(),
+                SizedBox(
+                  height: 15,
+                ),
+                Padding(
+                  padding: const EdgeInsets.only(left: 8.0, right: 10),
+                  child: getTable(firstTableContents()),
+                ),
+                customSpacer(),
+                SizedBox(
+                  height: 15,
+                ),
+                Padding(
+                  padding: const EdgeInsets.only(left: 8.0),
+                  child: header1('Clients'),
+                ),
+                Padding(
+                  padding: const EdgeInsets.only(left: 8.0),
+                  child: header1('Backed by'),
+                ),
+                customSpacer(),
+                SizedBox(
+                  height: 12,
+                ),
+                Padding(
+                  padding: const EdgeInsets.only(left: 8.0),
+                  child: highLightText('Highlights'),
+                ),
+                SizedBox(
+                  height: 12,
+                ),
+                Padding(
+                  padding: const EdgeInsets.only(left: 8.0),
+                  child: SizedBox(
                     height: 250,
                     child: ListView.separated(
                       separatorBuilder: (c, i) {
@@ -140,9 +165,21 @@ class _HomePageState extends State<HomePage> {
                       scrollDirection: Axis.horizontal,
                     ),
                   ),
-                  customSpacer(),
-                  highLightText('Key Metrics'),
-                  SizedBox(
+                ),
+                SizedBox(
+                  height: 30,
+                ),
+                customSpacer(),
+                Padding(
+                  padding: const EdgeInsets.only(left: 8.0),
+                  child: highLightText('Key Metrics'),
+                ),
+                SizedBox(
+                  height: 20,
+                ),
+                Padding(
+                  padding: const EdgeInsets.only(left: 8.0),
+                  child: SizedBox(
                     height: 40,
                     child: ListView.separated(
                       separatorBuilder: (c, i) {
@@ -156,7 +193,7 @@ class _HomePageState extends State<HomePage> {
                       itemBuilder: (c, i) {
                         return GestureDetector(
                           onTap: () {
-                            HapticFeedback.heavyImpact();
+                            HapticFeedback.vibrate();
                             setState(() {
                               _selectedIndex = [i];
                               tableData = resultMap[i]!;
@@ -177,9 +214,11 @@ class _HomePageState extends State<HomePage> {
                               child: Text(
                                 '${map[i]}',
                                 style: TextStyle(
-                                  color: Colors.white,
-                                  fontSize: 16,
-                                ),
+                                    color: _selectedIndex[0] == i
+                                        ? Colors.white
+                                        : Color(0xff78716C),
+                                    fontSize: 14,
+                                    fontWeight: FontWeight.w600),
                               ),
                             ),
                           ),
@@ -187,33 +226,39 @@ class _HomePageState extends State<HomePage> {
                       },
                     ),
                   ),
-                  SizedBox(
-                    height: 20,
-                  ),
-                  getTable(tableData),
-                  const SizedBox(height: 20),
-                  customSpacer(),
-                  const SizedBox(height: 20),
-                  highLightText('Documents'),
-                  const SizedBox(height: 10),
-                  Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: nestedTextInsideContainer(Icons.file_copy,
-                        secondaryIcon: Icons.arrow_circle_down),
-                  ),
-                  const SizedBox(
-                    height: 20,
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: nestedTextInsideContainer(Icons.cable_outlined,
-                        secondaryIcon: Icons.arrow_circle_down),
-                  ),
-                  const SizedBox(
-                    height: 200,
-                  )
-                ],
-              ),
+                ),
+                SizedBox(
+                  height: 20,
+                ),
+                Padding(
+                  padding: const EdgeInsets.only(left: 8.0, right: 10),
+                  child: getTable(tableData),
+                ),
+                const SizedBox(height: 20),
+                customSpacer(),
+                const SizedBox(height: 20),
+                Padding(
+                  padding: const EdgeInsets.only(left: 8.0),
+                  child: highLightText('Documents'),
+                ),
+                const SizedBox(height: 10),
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: nestedTextInsideContainer(Icons.file_copy,
+                      secondaryIcon: Icons.arrow_circle_down),
+                ),
+                const SizedBox(
+                  height: 20,
+                ),
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: nestedTextInsideContainer(Icons.cable_outlined,
+                      secondaryIcon: Icons.arrow_circle_down),
+                ),
+                const SizedBox(
+                  height: 200,
+                )
+              ],
             )));
   }
 
@@ -289,8 +334,11 @@ class _HomePageState extends State<HomePage> {
                         color: Color(0xff15803D),
                         borderRadius: BorderRadius.all(Radius.circular(8.0))),
                     child: const Center(
-                      child: Text("Tap to invest",
-                          style: TextStyle(color: Colors.white)),
+                      child: Text("Tap to Invest",
+                          style: TextStyle(
+                              color: Colors.white,
+                              fontSize: 14,
+                              fontWeight: FontWeight.w500)),
                     )),
               ),
             ),
