@@ -78,8 +78,7 @@ class _SecondSuccessPageState extends State<SecondSuccessPage>
                   )
                 : Padding(
                     padding: EdgeInsets.only(left: 85, top: 180),
-                    child: Positioned(
-                        child: Column(
+                    child: Column(
                       children: [
                         Container(
                           height: 120,
@@ -125,7 +124,7 @@ class _SecondSuccessPageState extends State<SecondSuccessPage>
                               )
                             : Text('')
                       ],
-                    )),
+                    ),
                   )
           ],
         ));

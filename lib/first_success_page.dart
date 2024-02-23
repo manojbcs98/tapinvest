@@ -59,8 +59,7 @@ class _FirstSuccessPageState extends State<FirstSuccessPage>
                   EdgeInsets.only(left: _isRotating ? 140 : 90.0, top: 180),
               child: Column(
                 children: [
-                  Positioned(
-                      child: Column(
+                  Column(
                     children: [
                       Container(
                           height: 120,
@@ -122,7 +121,7 @@ class _FirstSuccessPageState extends State<FirstSuccessPage>
                             )
                           : Text(''),
                     ],
-                  ))
+                  )
                 ],
               ),
             )

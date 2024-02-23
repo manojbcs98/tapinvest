@@ -41,8 +41,7 @@ class _AllDoneState extends State<AllDone> {
             ),
             Padding(
               padding: EdgeInsets.only(left: 110, top: 180),
-              child: Positioned(
-                  child: Column(
+              child: Column(
                 children: [
                   Container(
                     height: 120,
@@ -75,7 +74,7 @@ class _AllDoneState extends State<AllDone> {
                         fontWeight: FontWeight.w300),
                   ),
                 ],
-              )),
+              ),
             )
           ],
         ));
