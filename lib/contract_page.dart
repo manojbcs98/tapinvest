@@ -24,6 +24,7 @@ class ContractPage extends StatelessWidget {
                 child: ElevatedButton(
                     onPressed: () {
                       HapticFeedback.vibrate();
+                      Navigator.pop(context);
                       Navigator.push(context,
                           MaterialPageRoute(builder: (context) => AllDone()));
                     },

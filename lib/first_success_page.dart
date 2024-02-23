@@ -27,6 +27,7 @@ class _FirstSuccessPageState extends State<FirstSuccessPage>
       _controller.stop();
     });
     Future.delayed(const Duration(seconds: 10), () {
+      Navigator.pop(context);
       Navigator.of(context).pushReplacement(
         MaterialPageRoute(
           builder: (context) => SecondSuccessPage(),

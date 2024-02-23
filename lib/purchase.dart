@@ -46,7 +46,10 @@ class _PurchasePageState extends State<PurchasePage> {
                 width: 40,
                 decoration: const BoxDecoration(
                     shape: BoxShape.circle, color: lightGreen),
-                child: const BackButton(color: primaryColor)),
+                child: BackButton(
+                  color: primaryColor,
+                  style: ButtonStyle(iconSize: MaterialStateProperty.all(20)),
+                )),
           ),
           title: const Padding(
             padding: EdgeInsets.only(
@@ -59,7 +62,7 @@ class _PurchasePageState extends State<PurchasePage> {
         body: SingleChildScrollView(
             physics: const ScrollPhysics(),
             child: Padding(
-              padding: const EdgeInsets.all(8.0),
+              padding: const EdgeInsets.only(left: 4.0),
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.start,
                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -72,16 +75,19 @@ class _PurchasePageState extends State<PurchasePage> {
                             fontWeight: FontWeight.bold,
                             fontSize: 22)),
                   ),
-                  text1(
-                      TextStyle(
-                          color: Color(0xff807A75),
-                          fontWeight: FontWeight.w400,
-                          fontSize: 16),
-                      TextStyle(
-                          color: Color(0xff807A75),
-                          fontWeight: FontWeight.w400,
-                          fontSize: 16),
-                      18),
+                  Padding(
+                    padding: const EdgeInsets.only(left: 0.0),
+                    child: text1(
+                        const TextStyle(
+                            color: Color(0xff807A75),
+                            fontWeight: FontWeight.w400,
+                            fontSize: 16),
+                        TextStyle(
+                            color: Color(0xff807A75),
+                            fontWeight: FontWeight.w400,
+                            fontSize: 16),
+                        18),
+                  ),
                   SizedBox(
                     height: 20,
                   ),
@@ -183,7 +189,8 @@ class _PurchasePageState extends State<PurchasePage> {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          Text('Net Yield', style: TextStyle(color: Color(0xFF54607F))),
+          Text('Net Yield',
+              style: TextStyle(color: Color(0xFF54607F), fontSize: 14)),
           SizedBox(
             width: 10,
           ),
@@ -216,7 +223,10 @@ class _PurchasePageState extends State<PurchasePage> {
           Padding(
             padding: EdgeInsets.only(right: 8.0),
             child: Text('13.11%',
-                style: TextStyle(color: Color(0xFF475568), fontSize: 17)),
+                style: TextStyle(
+                    color: Color(0xFF475568),
+                    fontSize: 17,
+                    fontWeight: FontWeight.w500)),
           )
         ],
       ),
@@ -255,8 +265,12 @@ class _PurchasePageState extends State<PurchasePage> {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          Text(text1, style: TextStyle(color: Color(0xFF54607F), fontSize: 17)),
-          Text(text2, style: TextStyle(color: Color(0xFF475568), fontSize: 17)),
+          Text(text1, style: TextStyle(color: Color(0xFF54607F), fontSize: 15)),
+          Text(text2,
+              style: const TextStyle(
+                  color: Color(0xFF475568),
+                  fontSize: 17,
+                  fontWeight: FontWeight.w500)),
         ],
       ),
     );
@@ -334,11 +348,9 @@ class _PurchasePageState extends State<PurchasePage> {
                               });
                             },
                       sliderRotate: false,
-
                       outerColor: Color(0xFFE7E5E4),
                       sliderButtonIconPadding: 14,
                       innerColor: Color(0xFF16803C),
-                      //reversed: false,
                       elevation: 0,
                       borderRadius: 5,
                       height: 55,

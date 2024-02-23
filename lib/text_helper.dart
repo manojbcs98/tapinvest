@@ -140,15 +140,18 @@ Widget header1(String text) {
           child: Row(
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
-              Image.asset('assets/google.png', height: 80, width: 80),
+              Image.asset('assets/google_logo-modified.png',
+                  height: 80, width: 80),
               SizedBox(
                 width: 20,
               ),
-              Image.asset('assets/google.png', height: 80, width: 80),
+              Image.asset('assets/google_logo-modified.png',
+                  height: 80, width: 80),
               SizedBox(
                 width: 20,
               ),
-              Image.asset('assets/google.png', height: 80, width: 80),
+              Image.asset('assets/google_logo-modified.png',
+                  height: 80, width: 80),
             ],
           ),
         )

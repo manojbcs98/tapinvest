@@ -12,17 +12,33 @@ class SecondSuccessPage extends StatefulWidget {
 class _SecondSuccessPageState extends State<SecondSuccessPage>
     with SingleTickerProviderStateMixin {
   late AnimationController _controller;
+  bool isLoading = false;
 
   @override
   void initState() {
     super.initState();
 
+    _loadWidgetAfterDelay();
+
     Future.delayed(const Duration(seconds: 10), () {
+      Navigator.pop(context);
       Navigator.of(context).pushReplacement(
         MaterialPageRoute(
           builder: (context) => const ContractPage(),
         ),
       );
+    });
+  }
+
+  void _loadWidgetAfterDelay() {
+    setState(() {
+      isLoading = true;
+    });
+
+    Future.delayed(const Duration(seconds: 2), () {
+      setState(() {
+        isLoading = false;
+      });
     });
   }
 
@@ -41,54 +57,76 @@ class _SecondSuccessPageState extends State<SecondSuccessPage>
                 height: 200,
               ),
             ),
-            Padding(
-              padding: EdgeInsets.only(left: 65, top: 180),
-              child: Positioned(
-                  child: Column(
-                children: [
-                  Container(
-                    height: 120,
-                    width: 120,
-                    decoration: BoxDecoration(
-                      color: Color(0xFF126631),
-                      borderRadius: BorderRadius.circular(15),
-                    ),
-                    child: Hero(
-                      tag: 'checked',
-                      child: Icon(Icons.document_scanner,
-                          size: 25, color: Colors.white),
-                    ),
-                  ),
-                  SizedBox(
-                    height: 40,
-                  ),
-                  Text(
-                    'Generating Contract',
-                    style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 15,
-                        fontWeight: FontWeight.w500),
-                  ),
-                  SizedBox(
-                    height: 10,
-                  ),
-                  Text(
-                    'You are almost there!',
-                    style: TextStyle(
-                        color: Color(0xFFA1CCB1),
-                        fontSize: 13,
-                        fontWeight: FontWeight.w300),
-                  ),
-                  Text(
-                    'Do not leave the page or press the back button.',
-                    style: TextStyle(
-                        color: Color(0xFFA1CCB1),
-                        fontSize: 13,
-                        fontWeight: FontWeight.w300),
+            isLoading == true
+                ? Padding(
+                    padding: EdgeInsets.only(left: 130, top: 180),
+                    child: Positioned(
+                        child: Column(
+                      children: [
+                        Container(
+                          height: 120,
+                          width: 120,
+                          decoration: BoxDecoration(
+                            color: Color(0xFF126631),
+                            borderRadius: BorderRadius.circular(15),
+                          ),
+                          child: Icon(Icons.file_copy_outlined,
+                              size: 50, color: Colors.white),
+                        ),
+                      ],
+                    )),
                   )
-                ],
-              )),
-            )
+                : Padding(
+                    padding: EdgeInsets.only(left: 65, top: 180),
+                    child: Positioned(
+                        child: Column(
+                      children: [
+                        Container(
+                          height: 120,
+                          width: 120,
+                          decoration: BoxDecoration(
+                            color: Color(0xFF126631),
+                            borderRadius: BorderRadius.circular(15),
+                          ),
+                          child: Icon(Icons.file_copy_outlined,
+                              size: 50, color: Colors.white),
+                        ),
+                        SizedBox(
+                          height: 40,
+                        ),
+                        isLoading == false
+                            ? Text(
+                                'Generating Contract',
+                                style: TextStyle(
+                                    color: Colors.white,
+                                    fontSize: 15,
+                                    fontWeight: FontWeight.w500),
+                              )
+                            : Text(''),
+                        SizedBox(
+                          height: 10,
+                        ),
+                        isLoading == false
+                            ? Text(
+                                'You are almost there!',
+                                style: TextStyle(
+                                    color: Color(0xFFA1CCB1),
+                                    fontSize: 13,
+                                    fontWeight: FontWeight.w300),
+                              )
+                            : Text(''),
+                        isLoading == false
+                            ? Text(
+                                'Do not leave the page or press the back button.',
+                                style: TextStyle(
+                                    color: Color(0xFFA1CCB1),
+                                    fontSize: 13,
+                                    fontWeight: FontWeight.w300),
+                              )
+                            : Text('')
+                      ],
+                    )),
+                  )
           ],
         ));
   }

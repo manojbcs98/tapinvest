@@ -65,7 +65,7 @@ class _HomePageState extends State<HomePage> {
                     child: Row(
                       children: [
                         Padding(
-                          padding: const EdgeInsets.only(left: 8.0, top: 3),
+                          padding: const EdgeInsets.only(left: 18.0, top: 3),
                           child: Container(
                             width: 15,
                             height: 15,
@@ -76,26 +76,35 @@ class _HomePageState extends State<HomePage> {
                           ),
                         ),
                         Padding(
-                          padding: const EdgeInsets.only(left: 8.0, top: 3),
+                          padding: const EdgeInsets.only(left: 4.0, top: 3),
                           child: Container(
                             width: 15,
                             height: 15,
                             decoration: BoxDecoration(
                               color: Color(0xFF7CD957),
-                              borderRadius: BorderRadius.only(
-                                  bottomLeft: Radius.circular(2),
-                                  bottomRight: Radius.elliptical(10, 5),
-                                  topRight: Radius.elliptical(10, 5)),
+                              borderRadius: BorderRadius.circular(40),
                             ),
                           ),
                         ),
                         Padding(
-                          padding: const EdgeInsets.only(left: 8.0, top: 0),
-                          child: CustomPaint(
-                            painter: TrianglePainter(),
-                            child: Container(
-                              height: 20,
-                              width: 20,
+                          padding: const EdgeInsets.only(left: 4.0, top: 3),
+                          child: Container(
+                            width: 15,
+                            height: 15,
+                            decoration: BoxDecoration(
+                              color: Color(0xFF7CD957),
+                              borderRadius: BorderRadius.circular(40),
+                            ),
+                          ),
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.only(left: 4.0, top: 3),
+                          child: Container(
+                            width: 15,
+                            height: 15,
+                            decoration: BoxDecoration(
+                              color: Color(0xFF7CD957),
+                              borderRadius: BorderRadius.circular(40),
                             ),
                           ),
                         ),

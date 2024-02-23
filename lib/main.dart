@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:tap_invest_manoj/all_done.dart';
 import 'package:tap_invest_manoj/constants.dart';
+import 'package:tap_invest_manoj/second_success_page.dart';
 
 import 'home_page.dart';
 
@@ -47,27 +49,41 @@ class _MyHomePageState extends State<MyHomePage> {
         title: Text(widget.title, style: TextStyle(color: Colors.black87)),
       ),
       body: Center(
-          child: SizedBox(
-        width: 140,
-        height: 40,
-        child: ElevatedButton(
-            onPressed: () {
-              Navigator.push(context,
-                  MaterialPageRoute(builder: (context) => const HomePage()));
-            },
-            style: ElevatedButton.styleFrom(
-              foregroundColor: Colors.white,
-              backgroundColor:
-                  Color(0xFF179645), // Change the text color of the button
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(
-                    10), // Change the border radius of the button
-              ),
+          child: Padding(
+        padding: const EdgeInsets.only(top: 308.0),
+        child: Column(
+          children: [
+            Text('You are in First Page',
+                style: TextStyle(color: Colors.black54)),
+            SizedBox(
+              height: 10,
             ),
-            child: Text(
-              'See Inside',
-              style: TextStyle(color: Colors.white),
-            )),
+            SizedBox(
+              width: 140,
+              height: 40,
+              child: ElevatedButton(
+                  onPressed: () {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => const HomePage()));
+                  },
+                  style: ElevatedButton.styleFrom(
+                    foregroundColor: Colors.white,
+                    backgroundColor: Color(
+                        0xFF179645), // Change the text color of the button
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(
+                          10), // Change the border radius of the button
+                    ),
+                  ),
+                  child: Text(
+                    'See Inside',
+                    style: TextStyle(color: Colors.white),
+                  )),
+            ),
+          ],
+        ),
       )),
     );
   }

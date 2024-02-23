@@ -17,6 +17,7 @@ class _AllDoneState extends State<AllDone> {
     super.initState();
 
     Future.delayed(const Duration(seconds: 7), () {
+      Navigator.pop(context);
       Navigator.of(context).pushReplacement(
         MaterialPageRoute(
           builder: (context) => MyApp(),
@@ -52,8 +53,8 @@ class _AllDoneState extends State<AllDone> {
                       color: Color(0xFF126631),
                       borderRadius: BorderRadius.circular(15),
                     ),
-                    child:
-                        Icon(Icons.emoji_flags, size: 70, color: Colors.white),
+                    child: Image.asset('assets/flag.png',
+                        color: Colors.white, height: 20, width: 20),
                   ),
                   const SizedBox(
                     height: 40,
